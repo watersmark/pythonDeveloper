@@ -1,26 +1,24 @@
-# методы строк
-quote = "покажите мне код"
+# форматирование строк
 
-# метод нахождения колличества букв в строке
-print(quote.count('о'))
+# передаём placeholder
+str = "{} не лгут, а лгут {}".format('Цифры', "люди")
+print(str)
 
-# сделать первую букву большой
-print(quote.capitalize())
+# передам именованный placeholder
+# неименованные аргументы указать уже нельзя
+problem = "задач"
+str = "{num} Кб должно хватить для {problem}".format(
+    num = 640, problem=problem)
+print(str)
 
-# позволяет проверить является ли строка числом
-tempStr = '2017'
-print(tempStr.isdigit())
+# f-строки
+subj = "optimize"
+auth = 'Knuth'
 
-# оператор in позволяет проверить содержится ли
-# подстрока в строке
-tempStr = 'Hello'
-print('lo' in tempStr)
+print(f"Преждевременная {subj} - плохо. Автор {auth}")
 
-# преобразования строк
-num_string = str(999.01)
-print(num_string, type(num_string))
 
-# иттерация по строке
-for elem in num_string:
-    print(elem, end="")
-
+# вывод чисел с модификаторами
+num = 2 / 3
+print(f"{num:.3f}")
+print("{num:.3f}".format(num=num))
