@@ -1,24 +1,24 @@
-# форматирование строк
+# ввод и вывод строк
+#nameUser = input()
+#print(nameUser)
 
-# передаём placeholder
-str = "{} не лгут, а лгут {}".format('Цифры', "люди")
-print(str)
+# байтовые строки
+# Русские символы не поддерживает
+example_str = b"hello"
+print(example_str, type(example_str))
 
-# передам именованный placeholder
-# неименованные аргументы указать уже нельзя
-problem = "задач"
-str = "{num} Кб должно хватить для {problem}".format(
-    num = 640, problem=problem)
-print(str)
+for elem in example_str:
+    print(elem, end=" ")
+print()
 
-# f-строки
-subj = "optimize"
-auth = 'Knuth'
+# метод encode для строки
+# поддерживает Русские символы
+# каждый символ кодируется двумя буквами
+example_str = "привет"
 
-print(f"Преждевременная {subj} - плохо. Автор {auth}")
+example_str = example_str.encode()
+print(example_str)
 
-
-# вывод чисел с модификаторами
-num = 2 / 3
-print(f"{num:.3f}")
-print("{num:.3f}".format(num=num))
+# метод decode
+example_str = example_str.decode()
+print(example_str)
