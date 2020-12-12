@@ -1,9 +1,11 @@
-def friend(x):
+def spin_words(sentence):
+    resString = ""
 
-    massFriends = []
-    for elem in x:
-        massFriends.append(elem) if (len(elem) == 4) else None
+    countElem = 1
+    for elem in sentence.split(" "):
+        resString += elem if len(elem) < 5 else elem[::-1]
+        resString += " " if countElem != len(sentence.split(" ")) else ""
+        countElem += 1
+    return resString
 
-    return massFriends
-
-print(friend(["Ryan", "Kieran", "Mark"]))
+print(spin_words("Welcome"))
