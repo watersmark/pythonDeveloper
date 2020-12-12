@@ -1,17 +1,24 @@
-def duplicate_encode(word):
-    word = word.lower()
-    mapItem = dict()
-    resString = ""
+def find_outlier(integers):
+    isOdd = 0
+    isEven = 0
 
-    for elem in word:
-        if elem not in mapItem:
-            mapItem[elem] = 1
+    for elem in integers[0:4]:
+        if elem % 2 == 0:
+            isEven += 1
         else:
-            mapItem[elem] = mapItem[elem] + 1
+            isOdd += 1
 
-    for elem in word:
-        resString += ")" if mapItem[elem] > 1 else "("
+    boolIsOdd = False
+    if isOdd > isEven:
+        boolIsOdd = True
 
-    return resString
+    for elem in integers:
+        if boolIsOdd:
+            if elem % 2 == 0:
+                return elem
+        else:
+            if elem % 2 != 0:
+                return elem
 
-print(duplicate_encode("(( @"))
+
+print(find_outlier([160, 3, 1719, 19, 11, 13, -21]))
