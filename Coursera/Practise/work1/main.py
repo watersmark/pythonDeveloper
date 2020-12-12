@@ -1,12 +1,17 @@
-def alphabet_position(text):
-    text = text.lower()
+def duplicate_encode(word):
+    word = word.lower()
+    mapItem = dict()
+    resString = ""
 
-    massAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
-                    's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    for elem in word:
+        if elem not in mapItem:
+            mapItem[elem] = 1
+        else:
+            mapItem[elem] = mapItem[elem] + 1
 
-    return " ".join([str(massAlphabet.index(elem) + 1) for elem in text if elem in massAlphabet])
+    for elem in word:
+        resString += ")" if mapItem[elem] > 1 else "("
 
+    return resString
 
-print(alphabet_position("The sunset sets at twelve o' clock."))
-
-
+print(duplicate_encode("(( @"))
