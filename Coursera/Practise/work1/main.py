@@ -1,24 +1,12 @@
-def find_outlier(integers):
-    isOdd = 0
-    isEven = 0
+def unique_in_order(iterable):
+    massSet = []
 
-    for elem in integers[0:4]:
-        if elem % 2 == 0:
-            isEven += 1
+    for index in range(len(iterable)):
+        if index == 0:
+            massSet.append(iterable[index])
         else:
-            isOdd += 1
+            massSet.append(iterable[index]) if iterable[index - 1] != iterable[index] else None
 
-    boolIsOdd = False
-    if isOdd > isEven:
-        boolIsOdd = True
+    return massSet
 
-    for elem in integers:
-        if boolIsOdd:
-            if elem % 2 == 0:
-                return elem
-        else:
-            if elem % 2 != 0:
-                return elem
-
-
-print(find_outlier([160, 3, 1719, 19, 11, 13, -21]))
+print(unique_in_order('AAAABBBCCDAABBB'))
