@@ -1,15 +1,12 @@
-def digital_root(n):
+def alphabet_position(text):
+    text = text.lower()
 
-    if len(str(n)) == 1:
-        return int(n)
+    massAlphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r',
+                    's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-    return digital_root(str(sum([int(elem) for elem in str(n)])))
+    return " ".join([str(massAlphabet.index(elem) + 1) for elem in text if elem in massAlphabet])
 
-print(digital_root(132189))
 
-# string = "942"
-# digit = sum([int(elem) for elem in string])
-#
-# print(digit)
-#
+print(alphabet_position("The sunset sets at twelve o' clock."))
+
 
