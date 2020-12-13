@@ -1,10 +1,21 @@
-# чтобы словарь мог помнить порядок вхождения элементов
+# множества являются хешируемыми
 
-from  collections import  OrderedDict
+# инициализация множеств
+oddSet = set()
+evenSet = set()
 
-ordered = OrderedDict()
-for number in range(10):
-    ordered[number] = str(number)
+# добавление элемента множества
+oddSet.add(3)
+oddSet.add("3")
+print(oddSet)
 
-for key in ordered.keys():
-    print(key)
+# удаление элемента множества
+oddSet.remove(3)
+print(oddSet)
+
+# чтобы сделать множество неизменяемым
+# в данное множество сы не можем добавлятьи удалять элементы
+frozen = frozenset(['Anna', "Rana"])
+
+# frozen.add(3) так не получится сделать
+
