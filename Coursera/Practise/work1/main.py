@@ -1,21 +1,26 @@
-# множества являются хешируемыми
+# функции
 
-# инициализация множеств
-oddSet = set()
-evenSet = set()
+# функции могут быть аннотированны
+# передаваемые значения могут несоответствовать типам
+# типы нужны для понимания программистом или IDE
+def add(x: int, y: int) -> int:
+    print(x + y)
 
-# добавление элемента множества
-oddSet.add(3)
-oddSet.add("3")
-print(oddSet)
+def mult(x: [], y: {}) -> None:
+    print(x)
 
-# удаление элемента множества
-oddSet.remove(3)
-print(oddSet)
 
-# чтобы сделать множество неизменяемым
-# в данное множество сы не можем добавлятьи удалять элементы
-frozen = frozenset(['Anna', "Rana"])
+# в Python все значения передаются по ссылке
+def multMass(firstTuple: (), secondMass: []) -> None:
+    firstTuple = secondMass
 
-# frozen.add(3) так не получится сделать
+# first = (1, )
+# multMass(first, 3)
+# print(first)
 
+
+# в python есть именованные аргументы
+def say(greeting: str, name: str) -> None:
+    print("{greet} {name} !".format(greet=greeting, name=name))
+
+say(name='Topa',greeting="Opa")
