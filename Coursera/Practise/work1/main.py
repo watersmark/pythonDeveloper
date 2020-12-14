@@ -1,26 +1,60 @@
 # функции
 
-# функции могут быть аннотированны
-# передаваемые значения могут несоответствовать типам
-# типы нужны для понимания программистом или IDE
-def add(x: int, y: int) -> int:
-    print(x + y)
-
-def mult(x: [], y: {}) -> None:
-    print(x)
+# аргументы по умолчанию
+def function_greet(name='unknown'):
+    print(name)
 
 
-# в Python все значения передаются по ссылке
-def multMass(firstTuple: (), secondMass: []) -> None:
-    firstTuple = secondMass
+function_greet()
 
-# first = (1, )
-# multMass(first, 3)
-# print(first)
+# аргументы по умолчанию для каждой функции
+# интерпретатор записывает в особые переменные
+# поэтому изменяемы типы данных лучше не использовать, как значения по
+# умолчанию, так как они могут быть дозаписаны
+
+def append_one(arg=[]):
+    arg.append(1)
+    return arg
+
+print(append_one())
+print(append_one())
+
+# надо было сделать тип по умолчанию, как None
+def function(iterable=None):
+    iterable = iterable or []
+    return iterable
+
+print(function())
 
 
-# в python есть именованные аргументы
-def say(greeting: str, name: str) -> None:
-    print("{greet} {name} !".format(greet=greeting, name=name))
+# в python функции могут принимать неограниченное
+# кол-во аргументов
+# чтобы задать произвольнео число аргументов
+# используем звёздочку в функции
+# чтобы развернуть произвольное число аргументов
+# так же используем звёздочку
+# при разименовании словаря мы получаем озиционые аргументы
+# и можем передать их в *args
+def printer(*args):
 
-say(name='Topa',greeting="Opa")
+    print(args) # кортеж
+    print(*args) # отдельные элементы
+
+printer(1, 3, 4, 5)
+
+
+def print_arg(**args):
+    print(args) # словарь ключ-значение
+
+    for elem in args.items():   # получили отдельные значения
+        print("{key}, {value}".format(key=elem[0], value=elem[1]))
+
+print_arg(a=10, b=12)
+
+
+
+
+
+
+
+
