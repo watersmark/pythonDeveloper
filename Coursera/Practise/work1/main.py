@@ -1,21 +1,16 @@
+# обычным циклом переберём кол-во раз сколько
+# будет отскоков на уровне 1.5 meters
+def bouncing_ball(h, bounce, window):
+    if h > 0 and  0 < bounce < 1 and window < h:
+        countS = 0
+        while True:
+            if window >= h:
+                return countS - 1
 
-# сделаем обход и будем выбирать два числа
-# либо равных, либо больших
-# заведём две переменные для иттерации
-def productFib(prod):
+            countS += 2
+            h = h * bounce
 
-    firstDigit = 0
-    secondDigit = 1
+    else:
+        return -1
 
-    while True:
-        if firstDigit * secondDigit < prod:
-            firstDigit, secondDigit = secondDigit, firstDigit + secondDigit
-            continue
-        if firstDigit * secondDigit == prod:
-            return [firstDigit, secondDigit, True]
-        else:
-            return [firstDigit, secondDigit, False]
-
-
-print(productFib(714))
-print(productFib(800))
+print(bouncing_ball(30, 0.75, 1.5))
