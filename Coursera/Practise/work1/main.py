@@ -1,18 +1,46 @@
-# возьмём два указателя
-# будем передвигать их по алгоритму ниже для перетаскивания  элементов
-def move_zeros(array):
-    first_cursor = 0  # main
-    second_cursor = 0  # support
+# пройдёмся по всему массиву
+# и найдём локальные максимумы и минимумы
+def pick_peaks(arr):
 
-    for elem in array:
-        if elem != 0 or isinstance(elem, bool):
-            array[first_cursor], array[second_cursor] = array[second_cursor], array[first_cursor]
-            first_cursor += 1
-            second_cursor += 1
+    pos_mass = []
+    peaks_mass = []
+
+    pos_cursor = 0
+    doing_step = 0
+    is_plato = False
+    minus_count = 0
+    different_count = 0
+
+    for index in range(len(arr) - 1):
+        doing_step += 1
+
+        if arr[index] <= arr[index + 1]:
+
+            if arr[index] == arr[index + 1]:
+                minus_count += 1
+                is_plato = True
+            else:
+                is_plato = False
+                different_count += 1
         else:
-            first_cursor += 1
+            different_count += 1
 
-    return array
+            if doing_step > 1 and different_count > 1:
 
+                if is_plato:
+                    pos_mass.append(index - minus_count)
+                    peaks_mass.append(arr[index])
+                else:
+                    pos_mass.append(index)
+                    peaks_mass.append(arr[index])
 
-print(move_zeros([False, 1, 0, 1, 2, 0, 1, 3, "a"]))
+            minus_count = 0
+            doing_step = 0
+            is_plato = False
+            different_count = 0
+
+    return {"pos" : pos_mass, "peaks" : peaks_mass}
+
+result = pick_peaks([2,1,3,2,2,2,2,1])
+print(result["pos"])
+print(result["peaks"])
