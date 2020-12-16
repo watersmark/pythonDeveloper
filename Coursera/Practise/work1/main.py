@@ -1,16 +1,18 @@
-# обычным циклом переберём кол-во раз сколько
-# будет отскоков на уровне 1.5 meters
-def bouncing_ball(h, bounce, window):
-    if h > 0 and  0 < bounce < 1 and window < h:
-        countS = 0
-        while True:
-            if window >= h:
-                return countS - 1
+# возьмём два указателя
+# будем передвигать их по алгоритму ниже для перетаскивания  элементов
+def move_zeros(array):
+    first_cursor = 0  # main
+    second_cursor = 0  # support
 
-            countS += 2
-            h = h * bounce
+    for elem in array:
+        if elem != 0 or isinstance(elem, bool):
+            array[first_cursor], array[second_cursor] = array[second_cursor], array[first_cursor]
+            first_cursor += 1
+            second_cursor += 1
+        else:
+            first_cursor += 1
 
-    else:
-        return -1
+    return array
 
-print(bouncing_ball(30, 0.75, 1.5))
+
+print(move_zeros([False, 1, 0, 1, 2, 0, 1, 3, "a"]))
