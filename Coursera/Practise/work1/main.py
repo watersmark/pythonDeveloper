@@ -1,36 +1,26 @@
-# rec func to check mass
-def same_structure_as(original, other):
-    try:
-      
+def summary_res(map_str):
+    another_add = (1, 5)
 
-        if len(original) != len(other):
-            return False
-        temp_res = True
+    result_sum = 0
 
-        # делаем рекурсивные шаги
-        for index in range(len(original)):
+    for key in map_str:
+        if key != 1:
+            if key in another_add: result_sum += key * (map_str[key] // 3) * 100 + 50 * (map_str[key] - (map_str[key] // 3) * 3)
+            else: result_sum += key * (map_str[key] // 3) * 100
+        else:
+            result_sum += (map_str[key] // 3) * 1000 + 100 * (map_str[key] - (map_str[key] // 3) * 3)
 
-            if type(original[index]) == type(other[index]) or (issubclass(type(original[index]), (int, str)) and issubclass(type(other[index]), (int, str))):
-                if isinstance(original[index], list):
-                    temp_res = same_structure_as(original[index], other[index])
-
-                    # если из функции вернулся None
-                    if temp_res == None:
-                        temp_res = True
-                else:
-                    if index == len(original) - 1:
-                        return True
-            else:
-                return False
-
-            # выходим из функции
-            if not temp_res:
-                return False
-
-        return True
-    except:
-        return False
+    return result_sum
 
 
-print(same_structure_as([1,'[',']'], ['[',']',1]))
+def score(dice):
+    map_str = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6 : 0}
+
+    for digit in dice:
+        map_str[digit] += 1
+
+    return summary_res(map_str)
+
+
+print(score([2, 4, 4, 5, 4]))
 
