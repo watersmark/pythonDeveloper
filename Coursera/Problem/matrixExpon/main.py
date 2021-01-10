@@ -32,3 +32,4 @@ def calc(matrix, n):
 
 A = [[1, 2], [0, 1]]
 print(calc(A, 2 ))
+
